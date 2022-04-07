@@ -1,47 +1,26 @@
 import { useState } from "react";
 
 function Body() {
-    const [textForm, setTextForm] = useState({
-        text: ""
-    });
+    const [text, setText] = useState("");
 
-    function handleUpdateData(e) {
-        let targetName = e.target.name;
-        let targetValue = e.target.value;
 
-        setTextForm({
-            ...textForm, [targetName]: targetValue
-        });
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        const newText ={    
-            ...textForm,
-        }
-        
-        handleUpdateData(newText);
-
-        setTextForm({
-            text: "",
-        });
-    }
 
     return(
         <div>
-            <form onSubmit={handleSubmit}>
+           
                 <input
                     type="text"
                     placeholder="Text"
                     name="text"
-                    // value={}
-                    // onChange={}
+                    value={text}
+                    onChange={e => setText(e.target.value)}
                 />
-                <input type="submit" value="Submit" />
-            </form>
-            <div>
-                { textForm.text }
-            </div>
+            
+           
+            <div>text { text } </div>    
+            <div>text.length {text.length}</div>
+            <div>text.split("").reverse().join("") {text.split("").reverse().join("")}</div>
+            
         </div>
     )
 }
